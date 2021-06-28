@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/models/catalog.dart';
-import 'package:flutter_catalog/widgets/themes.dart';
+
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
@@ -12,7 +12,7 @@ class HomeDetailPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(backgroundColor: Colors.transparent),
         bottomNavigationBar: Container(
-          color: Colors.white,
+          color: context.cardColor,
           child: ButtonBar(
             alignment: MainAxisAlignment.spaceBetween,
             buttonPadding: EdgeInsets.zero,
@@ -24,12 +24,12 @@ class HomeDetailPage extends StatelessWidget {
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all(StadiumBorder()),
                     backgroundColor:
-                        MaterialStateProperty.all(MyTheme.darkBluishColor)),
+                        MaterialStateProperty.all(context.theme.buttonColor)),
               ).wh(120, 50)
             ],
           ).p32(),
         ),
-        backgroundColor: MyTheme.creamColour,
+        backgroundColor: context.canvasColor,
         body: SafeArea(
           bottom: false,
           child: Column(
@@ -44,13 +44,16 @@ class HomeDetailPage extends StatelessWidget {
                 arcType: VxArcType.CONVEY,
                 edge: VxEdge.TOP,
                 child: Container(
-                  color: Colors.white,
+                  color: context.cardColor,
                   width: context.screenWidth,
                   child: Column(
                     children: [
-                      catalog.name.text.bold.xl4.make(),
+                      catalog.name.text.bold.xl4
+                          .color(context.accentColor)
+                          .make(),
                       catalog.desc.text
                           .textStyle(context.captionStyle!)
+                          .color(context.accentColor)
                           .xl
                           .make(),
                       10.heightBox,

@@ -6,7 +6,7 @@ import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/drawer.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_header.dart';
 import 'package:flutter_catalog/widgets/home_widgets/catalog_list.dart';
-import 'package:flutter_catalog/widgets/themes.dart';
+
 import 'package:velocity_x/velocity_x.dart';
 
 import 'dart:convert';
@@ -41,17 +41,18 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(
           child: Icon(
             CupertinoIcons.cart,
+            color: Colors.white,
           ),
           onPressed: () {
             Navigator.pushNamed(context, MyRoutes.cartRoute);
           },
-          backgroundColor: MyTheme.darkBluishColor,
+          backgroundColor: context.theme.buttonColor,
         ),
         appBar: AppBar(
-          backgroundColor: MyTheme.creamColour,
-          elevation: 0.0,
+          backgroundColor: Colors.transparent,
         ),
-        backgroundColor: MyTheme.creamColour,
+        backgroundColor: context.canvasColor,
+        //Theme.of(context).canvasColor
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
